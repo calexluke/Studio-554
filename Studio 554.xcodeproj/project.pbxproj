@@ -10,8 +10,8 @@
 		FA23FFEE248019D5008DAE8A /* ClimateControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23FFED248019D5008DAE8A /* ClimateControlManager.swift */; };
 		FA3728D0247EBF6F00104213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728CF247EBF6F00104213 /* AppDelegate.swift */; };
 		FA3728D2247EBF6F00104213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728D1247EBF6F00104213 /* SceneDelegate.swift */; };
-		FA3728D4247EBF6F00104213 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728D3247EBF6F00104213 /* FirstViewController.swift */; };
-		FA3728D6247EBF6F00104213 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728D5247EBF6F00104213 /* SecondViewController.swift */; };
+		FA3728D4247EBF6F00104213 /* SystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728D3247EBF6F00104213 /* SystemViewController.swift */; };
+		FA3728D6247EBF6F00104213 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728D5247EBF6F00104213 /* TimerViewController.swift */; };
 		FA3728D9247EBF6F00104213 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3728D7247EBF6F00104213 /* Main.storyboard */; };
 		FA3728DB247EBF7000104213 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3728DA247EBF7000104213 /* Assets.xcassets */; };
 		FA3728DE247EBF7000104213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3728DC247EBF7000104213 /* LaunchScreen.storyboard */; };
@@ -25,8 +25,8 @@
 		FA3728CC247EBF6F00104213 /* Studio 554.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Studio 554.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3728CF247EBF6F00104213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA3728D1247EBF6F00104213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA3728D3247EBF6F00104213 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		FA3728D5247EBF6F00104213 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		FA3728D3247EBF6F00104213 /* SystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemViewController.swift; sourceTree = "<group>"; };
+		FA3728D5247EBF6F00104213 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		FA3728D8247EBF6F00104213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA3728DA247EBF7000104213 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA3728DD247EBF7000104213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,8 +83,8 @@
 		FA3728E5247EEFE500104213 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA3728D3247EBF6F00104213 /* FirstViewController.swift */,
-				FA3728D5247EBF6F00104213 /* SecondViewController.swift */,
+				FA3728D3247EBF6F00104213 /* SystemViewController.swift */,
+				FA3728D5247EBF6F00104213 /* TimerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,8 +186,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA3728D6247EBF6F00104213 /* SecondViewController.swift in Sources */,
-				FA3728D4247EBF6F00104213 /* FirstViewController.swift in Sources */,
+				FA3728D6247EBF6F00104213 /* TimerViewController.swift in Sources */,
+				FA3728D4247EBF6F00104213 /* SystemViewController.swift in Sources */,
 				FA3728D0247EBF6F00104213 /* AppDelegate.swift in Sources */,
 				FA23FFEE248019D5008DAE8A /* ClimateControlManager.swift in Sources */,
 				FA6B066E2480B6C8006273A9 /* Constants.swift in Sources */,

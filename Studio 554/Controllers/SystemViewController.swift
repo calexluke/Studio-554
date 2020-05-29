@@ -12,7 +12,7 @@ var model = ClimateControlModel()
 var manager = ClimateControlManager()
 let constants = Constants()
 
-class FirstViewController: UIViewController {
+class SystemViewController: UIViewController {
 
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var thermometerImage: UIImageView!
