@@ -10,6 +10,7 @@ import UIKit
 
 var model = ClimateControlModel()
 var manager = ClimateControlManager()
+let constants = Constants()
 
 class FirstViewController: UIViewController {
 

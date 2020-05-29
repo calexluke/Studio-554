@@ -9,14 +9,12 @@
 import Foundation
 
 struct ClimateControlManager {
-    
-    let talkbackAPIKey = "3BLTM545BWPLGI4O"
         
     func requestChannelFeed(field: Int) {
         
         // field refers to data streams in the thingspeak channel. field 1 is temperature data, field 2 and 3 are heater and ac status
         
-        let urlString = "https://api.thingspeak.com/channels/1067747/fields/\(field)/last.txt?api_key=GRW3H6TCCNKMRTCP"
+        let urlString = "https://api.thingspeak.com/channels/1067747/fields/\(field)/last.txt?api_key=\(constants.readAPIKey)"
     
         // Four steps for networking:
             // 1. Create a URL object
@@ -61,7 +59,7 @@ struct ClimateControlManager {
         request.httpMethod = "POST"
          
         // HTTP Request Parameters which will be sent in HTTP Request Body
-        let postString = "api_key=\(talkbackAPIKey)&command_string=\(command)";
+        let postString = "api_key=\(constants.talkbackAPIKey)&command_string=\(command)";
 
         // Set HTTP Request Body
         request.httpBody = postString.data(using: String.Encoding.utf8);

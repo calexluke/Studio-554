@@ -17,6 +17,7 @@
 		FA3728DE247EBF7000104213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3728DC247EBF7000104213 /* LaunchScreen.storyboard */; };
 		FA3728E8247EF05600104213 /* ClimateControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728E7247EF05600104213 /* ClimateControlModel.swift */; };
 		FA6B066C2480ABC4006273A9 /* Arduino Code in Resources */ = {isa = PBXBuildFile; fileRef = FA6B066B2480ABC4006273A9 /* Arduino Code */; };
+		FA6B066E2480B6C8006273A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B066D2480B6C8006273A9 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FA3728DF247EBF7000104213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3728E7247EF05600104213 /* ClimateControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateControlModel.swift; sourceTree = "<group>"; };
 		FA6B066B2480ABC4006273A9 /* Arduino Code */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Arduino Code"; sourceTree = "<group>"; };
+		FA6B066D2480B6C8006273A9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				FA3728E9247EF05D00104213 /* Model */,
 				FA3728E5247EEFE500104213 /* Controllers */,
 				FA3728E6247EEFF800104213 /* Views */,
+				FA6B066D2480B6C8006273A9 /* Constants.swift */,
 				FA6B066A2480AB84006273A9 /* Arduino Files */,
 				FA3728DA247EBF7000104213 /* Assets.xcassets */,
 				FA3728DC247EBF7000104213 /* LaunchScreen.storyboard */,
@@ -187,6 +190,7 @@
 				FA3728D4247EBF6F00104213 /* FirstViewController.swift in Sources */,
 				FA3728D0247EBF6F00104213 /* AppDelegate.swift in Sources */,
 				FA23FFEE248019D5008DAE8A /* ClimateControlManager.swift in Sources */,
+				FA6B066E2480B6C8006273A9 /* Constants.swift in Sources */,
 				FA3728E8247EF05600104213 /* ClimateControlModel.swift in Sources */,
 				FA3728D2247EBF6F00104213 /* SceneDelegate.swift in Sources */,
 			);
