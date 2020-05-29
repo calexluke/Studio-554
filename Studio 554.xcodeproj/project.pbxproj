@@ -16,6 +16,7 @@
 		FA3728DB247EBF7000104213 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3728DA247EBF7000104213 /* Assets.xcassets */; };
 		FA3728DE247EBF7000104213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3728DC247EBF7000104213 /* LaunchScreen.storyboard */; };
 		FA3728E8247EF05600104213 /* ClimateControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728E7247EF05600104213 /* ClimateControlModel.swift */; };
+		FA6B066C2480ABC4006273A9 /* Arduino Code in Resources */ = {isa = PBXBuildFile; fileRef = FA6B066B2480ABC4006273A9 /* Arduino Code */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FA3728DD247EBF7000104213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA3728DF247EBF7000104213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3728E7247EF05600104213 /* ClimateControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateControlModel.swift; sourceTree = "<group>"; };
+		FA6B066B2480ABC4006273A9 /* Arduino Code */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Arduino Code"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				FA3728E9247EF05D00104213 /* Model */,
 				FA3728E5247EEFE500104213 /* Controllers */,
 				FA3728E6247EEFF800104213 /* Views */,
+				FA6B066A2480AB84006273A9 /* Arduino Files */,
 				FA3728DA247EBF7000104213 /* Assets.xcassets */,
 				FA3728DC247EBF7000104213 /* LaunchScreen.storyboard */,
 				FA3728DF247EBF7000104213 /* Info.plist */,
@@ -98,6 +101,14 @@
 				FA23FFED248019D5008DAE8A /* ClimateControlManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FA6B066A2480AB84006273A9 /* Arduino Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA6B066B2480ABC4006273A9 /* Arduino Code */,
+			);
+			path = "Arduino Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3728DE247EBF7000104213 /* LaunchScreen.storyboard in Resources */,
+				FA6B066C2480ABC4006273A9 /* Arduino Code in Resources */,
 				FA3728DB247EBF7000104213 /* Assets.xcassets in Resources */,
 				FA3728D9247EBF6F00104213 /* Main.storyboard in Resources */,
 			);

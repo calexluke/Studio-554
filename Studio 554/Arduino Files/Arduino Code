@@ -1,0 +1,186 @@
+#include <ESP8266WiFi.h>
+#include "ThingSpeak.h"
+ 
+// Pins
+const int temp_pin = A0;
+const int heat_ac_pin = 4;
+const int system_control_pin = 5;
+ 
+// WiFi config
+const char ssid[] = "NETGEAR69";
+const char password[] = "curlyvase957";
+ 
+// ThingSpeak config
+const unsigned long channel_id = 1067747;
+const unsigned long talkback_id = 38797;
+const char write_api_key[] = "7E9AUFEOMAWMO8DQ";
+const char talkback_api_key[] = "3BLTM545BWPLGI4O";
+
+
+
+// system status
+  int heater_status = 0;
+  int ac_status = 0;
+ 
+// WiFiClient object
+WiFiClient client;
+
+void setup() {
+
+  pinMode(heat_ac_pin, OUTPUT);
+  pinMode(system_control_pin, OUTPUT);
+  
+  // Initialize Serial
+  Serial.begin(9600);
+  delay(100);
+ 
+  // Connect to WiFi
+  Serial.print("Connecting to ");
+  Serial.print(ssid);
+  WiFi.begin(ssid, password);
+  while ( WiFi.status() != WL_CONNECTED ) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println();
+ 
+  // Show that we are connected
+  Serial.println("Connected!");
+ 
+  // Connect to ThingSpeak
+  ThingSpeak.begin(client);
+}
+
+void loop() {
+  
+ float voltage;
+  float temp_c;
+  float temp_f;
+ 
+  // Read temperature sensor (remember to multiply by 3!)
+  voltage = (analogRead(temp_pin) * 1.0 / 1023) * 3.0;
+  temp_c = 100.0 * voltage - 50;
+  temp_f = (temp_c * (9/5)) + 32;
+  Serial.print("Voltage: ");
+  Serial.print(voltage);
+  Serial.print("V degC: ");
+  Serial.println(temp_f);
+
+  // Create the TalkBack URI
+  String tbURI = String("/talkbacks/") + String(talkback_id) + String("/commands/execute");
+  
+  // Create the message body for the POST out of the values
+  String postMessage =  String("api_key=") + String(talkback_api_key);
+                       
+   // Make a string for any commands that might be in the queue
+  String newCommand = String();
+
+  // Make the POST to ThingSpeak
+  int x = httpPOST(tbURI, postMessage, newCommand);
+  client.stop();
+  
+  // Check the result
+  if(x == 200){
+    Serial.println("checking queue...");
+    // Check for a command returned from TalkBack
+    if(newCommand.length() != 0){
+
+      Serial.print("  Latest command from queue: ");
+      Serial.println(newCommand);
+      Serial.println(newCommand);
+      
+      if(newCommand.indexOf("HEAT_ON") > 0){
+        Serial.println("turning on heater");
+        digitalWrite(system_control_pin, HIGH);
+        digitalWrite(heat_ac_pin, HIGH);
+        heater_status = 1;
+        ac_status = 0;
+      }
+
+      if(newCommand.indexOf("AC_ON") > 0){
+        Serial.println("turning on ac");
+        digitalWrite(system_control_pin, HIGH);
+        digitalWrite(heat_ac_pin, LOW);
+        heater_status = 0;
+        ac_status = 1;
+      }
+
+      if(newCommand.indexOf("SYSTEM_OFF") >0) {
+        Serial.println("turning off system");
+        digitalWrite(system_control_pin, LOW);
+        digitalWrite(heat_ac_pin, LOW);
+        heater_status = 0;
+        ac_status = 0;
+      }
+    }
+    
+    else{
+      Serial.println("  Nothing new.");
+    }
+    
+  }
+  else{
+    Serial.println("Problem checking queue. HTTP error code " + String(x));
+  }
+  
+  // Write values to our ThingSpeak channel
+  Serial.println("Posting " + String(temp_f, 2) + " to ThingSpeak");
+  ThingSpeak.setField(1, String(temp_f, 2));
+   ThingSpeak.setField(2, String(heater_status));
+    ThingSpeak.setField(3, String(ac_status));
+  ThingSpeak.writeFields(channel_id, write_api_key);
+  
+  delay(30000);
+
+}
+
+// General function to POST to ThingSpeak
+int httpPOST(String uri, String postMessage, String &response){
+
+  bool connectSuccess = false;
+  connectSuccess = client.connect("api.thingspeak.com",80);
+
+  if(!connectSuccess){
+      return -301;
+  }
+  
+  postMessage += "&headers=false";
+  
+  String Headers =  String("POST ") + uri + String(" HTTP/1.1\r\n") +
+                    String("Host: api.thingspeak.com\r\n") +
+                    String("Content-Type: application/x-www-form-urlencoded\r\n") +
+                    String("Connection: close\r\n") +
+                    String("Content-Length: ") + String(postMessage.length()) +
+                    String("\r\n\r\n");
+
+  client.print(Headers);
+  client.print(postMessage);
+
+  long startWaitForResponseAt = millis();
+  while(client.available() == 0 && millis() - startWaitForResponseAt < 5000){
+      delay(100);
+  }
+
+  if(client.available() == 0){
+    return -304; // Didn't get server response in time
+  }
+
+  if(!client.find(const_cast<char *>("HTTP/1.1"))){
+      return -303; // Couldn't parse response (didn't find HTTP/1.1)
+  }
+  
+  int status = client.parseInt();
+  if(status != 200){
+    return status;
+  }
+
+  if(!client.find(const_cast<char *>("\n\r\n"))){
+    return -303;
+  }
+
+  String tempString = String(client.readString());
+  response = tempString;
+  
+  return status;
+    
+}

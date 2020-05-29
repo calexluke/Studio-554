@@ -24,16 +24,19 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // fetch temperature and heater/AC status from thingSpeak
         manager.requestChannelFeed(field: 1)
         manager.requestChannelFeed(field: 2)
         manager.requestChannelFeed(field: 3)
         
         confirmButton.layer.cornerRadius = confirmButton.frame.size.height / 2
         
+        // Waits until networking completed. Need to edit this to avoid infinite loop when not connected to internet
         while (!model.tempUpdated || !model.acUpdated || !model.heaterUpdated) {
             print("waiting for network response...")
         }
         
+        // temp label, themometer image, and switch positions updated based on data from ThingSpeak
         temperatureLabel.text = "\(model.roomTemp)° F"
         updateThermometerImage(temperature: model.roomTemp)
         updateSwitches()
@@ -47,24 +50,24 @@ class FirstViewController: UIViewController {
         
     }
 
+    //MARK: - Button and Switches
+    
+    
+    // update model to reflect switch states
     @IBAction func heaterToggled(_ sender: UISwitch) {
         
         if sender.isOn {
             model.heaterIsOn = true
-            print("heater switched to on")
         } else {
             model.heaterIsOn = false
-            print("heater switched to off")
         }
     }
     
     @IBAction func acToggled(_ sender: UISwitch) {
         if sender.isOn {
             model.acIsOn = true
-            print("ac switched to on")
         } else {
             model.acIsOn = false
-            print("ac switched to off")
         }
     }
     
@@ -85,6 +88,8 @@ class FirstViewController: UIViewController {
             presentWarningAlert(title: "Turning system off!")
         }
     }
+    
+    //MARK: - Helper functions
     
     func updateThermometerImage(temperature: Int) {
         if temperature < 58 {

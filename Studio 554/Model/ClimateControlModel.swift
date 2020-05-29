@@ -13,11 +13,13 @@ struct ClimateControlModel {
     var roomTemp: Int = 50
     var heaterIsOn: Bool = false
     var acIsOn: Bool = false
+    
     var tempUpdated: Bool = false
     var heaterUpdated: Bool = false
     var acUpdated: Bool = false
     
     mutating func updateTemperature(with temperatureString: String) {
+        // rounds down to next lower integer
         roomTemp = Int(Float(temperatureString)!)
         tempUpdated = true
         print("setting temperature to \(roomTemp) degrees")
@@ -42,26 +44,4 @@ struct ClimateControlModel {
             acUpdated = true
         }
     }
-    
-    mutating func toggleSystem(_ appliance: String) {
-        
-        if appliance == "heater" {
-            if heaterIsOn == false {
-                heaterIsOn = true
-            } else {
-                heaterIsOn = false
-            }
-        }
-        
-        if appliance == "ac" {
-            if acIsOn == false {
-                acIsOn = true
-            } else {
-                acIsOn = false
-            }
-        }
-    }
-    
-  
-    
 }
