@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA23FFEE248019D5008DAE8A /* ClimateControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23FFED248019D5008DAE8A /* ClimateControlManager.swift */; };
 		FA3728D0247EBF6F00104213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728CF247EBF6F00104213 /* AppDelegate.swift */; };
 		FA3728D2247EBF6F00104213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728D1247EBF6F00104213 /* SceneDelegate.swift */; };
 		FA3728D4247EBF6F00104213 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728D3247EBF6F00104213 /* FirstViewController.swift */; };
@@ -14,9 +15,11 @@
 		FA3728D9247EBF6F00104213 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3728D7247EBF6F00104213 /* Main.storyboard */; };
 		FA3728DB247EBF7000104213 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3728DA247EBF7000104213 /* Assets.xcassets */; };
 		FA3728DE247EBF7000104213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3728DC247EBF7000104213 /* LaunchScreen.storyboard */; };
+		FA3728E8247EF05600104213 /* ClimateControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728E7247EF05600104213 /* ClimateControlModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA23FFED248019D5008DAE8A /* ClimateControlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateControlManager.swift; sourceTree = "<group>"; };
 		FA3728CC247EBF6F00104213 /* Studio 554.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Studio 554.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3728CF247EBF6F00104213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA3728D1247EBF6F00104213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		FA3728DA247EBF7000104213 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA3728DD247EBF7000104213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA3728DF247EBF7000104213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3728E7247EF05600104213 /* ClimateControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateControlModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +64,40 @@
 			children = (
 				FA3728CF247EBF6F00104213 /* AppDelegate.swift */,
 				FA3728D1247EBF6F00104213 /* SceneDelegate.swift */,
-				FA3728D3247EBF6F00104213 /* FirstViewController.swift */,
-				FA3728D5247EBF6F00104213 /* SecondViewController.swift */,
-				FA3728D7247EBF6F00104213 /* Main.storyboard */,
+				FA3728E9247EF05D00104213 /* Model */,
+				FA3728E5247EEFE500104213 /* Controllers */,
+				FA3728E6247EEFF800104213 /* Views */,
 				FA3728DA247EBF7000104213 /* Assets.xcassets */,
 				FA3728DC247EBF7000104213 /* LaunchScreen.storyboard */,
 				FA3728DF247EBF7000104213 /* Info.plist */,
 			);
 			path = "Studio 554";
+			sourceTree = "<group>";
+		};
+		FA3728E5247EEFE500104213 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA3728D3247EBF6F00104213 /* FirstViewController.swift */,
+				FA3728D5247EBF6F00104213 /* SecondViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FA3728E6247EEFF800104213 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA3728D7247EBF6F00104213 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA3728E9247EF05D00104213 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA3728E7247EF05600104213 /* ClimateControlModel.swift */,
+				FA23FFED248019D5008DAE8A /* ClimateControlManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +174,8 @@
 				FA3728D6247EBF6F00104213 /* SecondViewController.swift in Sources */,
 				FA3728D4247EBF6F00104213 /* FirstViewController.swift in Sources */,
 				FA3728D0247EBF6F00104213 /* AppDelegate.swift in Sources */,
+				FA23FFEE248019D5008DAE8A /* ClimateControlManager.swift in Sources */,
+				FA3728E8247EF05600104213 /* ClimateControlModel.swift in Sources */,
 				FA3728D2247EBF6F00104213 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
