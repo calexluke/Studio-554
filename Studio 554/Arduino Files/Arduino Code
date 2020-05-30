@@ -8,13 +8,16 @@ const int system_control_pin = 5;
  
 // WiFi config
 const char ssid[] = "NETGEAR69";
-const char password[] = constants.networkPassword;
+const char password[] = "curlyvase957";
  
 // ThingSpeak config
 const unsigned long channel_id = 1067747;
 const unsigned long talkback_id = 38797;
-const char write_api_key[] = constants.writeAPIKey;
-const char talkback_api_key[] = constants.talkbackAPIKey;
+const char write_api_key[] = "7E9AUFEOMAWMO8DQ";
+const char read_api_key[] = "GRW3H6TCCNKMRTCP";
+const char talkback_api_key[] = "3BLTM545BWPLGI4O";
+
+
 
 // system status
   int heater_status = 0;
@@ -64,7 +67,29 @@ void loop() {
   Serial.print("V degC: ");
   Serial.println(temp_f);
 
-  // Create the TalkBack URI
+  // Read command delay data from ThingSpeak
+  int commandDelay = ThingSpeak.readIntField(channel_id, 4, read_api_key);
+
+  // Check the status of the read operation to see if it was successful
+  int statusCode = ThingSpeak.getLastReadStatus();
+  if(statusCode == 200){
+    Serial.println("Command delay: " + String(commandDelay) + " seconds");
+  }
+  else{
+    Serial.println("Problem reading channel. HTTP error code " + String(statusCode));
+  }
+
+// if a timer is set, wait to execute next command
+  if (commandDelay > 0) {
+    Serial.println("Waiting until specified time to execute command. " + String(float(commandDelay) / 3600.00) + " hours remaining.");
+    commandDelay -= 30;
+    
+  } else {
+    
+    // command delay set to 0 so it does not stay negative
+    commandDelay = 0;
+
+    // Create the TalkBack URI
   String tbURI = String("/talkbacks/") + String(talkback_id) + String("/commands/execute");
   
   // Create the message body for the POST out of the values
@@ -81,11 +106,26 @@ void loop() {
   if(x == 200){
     Serial.println("checking queue...");
     // Check for a command returned from TalkBack
-    if(newCommand.length() != 0){
+    if(newCommand != 0){
 
-      Serial.print("  Latest command from queue: ");
+      Serial.println("  Latest command from queue: ");
       Serial.println(newCommand);
-      Serial.println(newCommand);
+
+// // delete other requests in queue
+//// Create the TalkBack URI for DELETE request
+//  String deleteURI = String("/talkbacks/") + String(talkback_id) + String("/commands");
+//  // Create the message body for the DELETE out of the values
+//  String deleteMessage =  String("api_key=") + String(talkback_api_key);
+//  // Make the Delete request to ThingSpeak
+//  int x = httpDELETE(deleteURI, postMessage);
+//  client.stop();
+//  // Check the result
+//  if(x == 200){
+//    Serial.println("deleted commands in queue");
+//  }
+//  else{
+//    Serial.println("Problem deleting command queue. HTTP error code " + String(x));
+//  }
       
       if(newCommand.indexOf("HEAT_ON") > 0){
         Serial.println("turning on heater");
@@ -94,7 +134,6 @@ void loop() {
         heater_status = 1;
         ac_status = 0;
       }
-
       if(newCommand.indexOf("AC_ON") > 0){
         Serial.println("turning on ac");
         digitalWrite(system_control_pin, HIGH);
@@ -102,7 +141,6 @@ void loop() {
         heater_status = 0;
         ac_status = 1;
       }
-
       if(newCommand.indexOf("SYSTEM_OFF") >0) {
         Serial.println("turning off system");
         digitalWrite(system_control_pin, LOW);
@@ -111,14 +149,14 @@ void loop() {
         ac_status = 0;
       }
     }
-    
     else{
       Serial.println("  Nothing new.");
     }
-    
   }
   else{
     Serial.println("Problem checking queue. HTTP error code " + String(x));
+  }
+    
   }
   
   // Write values to our ThingSpeak channel
@@ -126,6 +164,7 @@ void loop() {
   ThingSpeak.setField(1, String(temp_f, 2));
    ThingSpeak.setField(2, String(heater_status));
     ThingSpeak.setField(3, String(ac_status));
+    ThingSpeak.setField(4, commandDelay);
   ThingSpeak.writeFields(channel_id, write_api_key);
   
   delay(30000);
@@ -178,6 +217,54 @@ int httpPOST(String uri, String postMessage, String &response){
 
   String tempString = String(client.readString());
   response = tempString;
+  
+  return status;
+    
+}
+
+// General function to DELETE from ThingSpeak
+int httpDELETE(String uri, String deleteMessage){
+
+  bool connectSuccess = false;
+  connectSuccess = client.connect("api.thingspeak.com",80);
+
+  if(!connectSuccess){
+      return -301;
+  }
+  
+  deleteMessage += "&headers=false";
+  
+  String Headers =  String("DELETE ") + uri + String(" HTTP/1.1\r\n") +
+                    String("Host: api.thingspeak.com\r\n") +
+                    String("Content-Type: application/x-www-form-urlencoded\r\n") +
+                    String("Connection: close\r\n") +
+                    String("Content-Length: ") + String(deleteMessage.length()) +
+                    String("\r\n\r\n");
+
+  client.print(Headers);
+  client.print(deleteMessage);
+
+  long startWaitForResponseAt = millis();
+  while(client.available() == 0 && millis() - startWaitForResponseAt < 5000){
+      delay(100);
+  }
+
+  if(client.available() == 0){
+    return -304; // Didn't get server response in time
+  }
+
+  if(!client.find(const_cast<char *>("HTTP/1.1"))){
+      return -303; // Couldn't parse response (didn't find HTTP/1.1)
+  }
+  
+  int status = client.parseInt();
+  if(status != 200){
+    return status;
+  }
+
+  if(!client.find(const_cast<char *>("\n\r\n"))){
+    return -303;
+  }
   
   return status;
     

@@ -128,6 +128,7 @@ class ClimateControlManager {
         task.resume()
     }
     
+    // delete function not working. recieving 422 error. Need to figure this out.
     func deleteTalkbackCommands() {
         
         let url = URL(string: "https://api.thingspeak.com/talkbacks/38797/commands.json")
