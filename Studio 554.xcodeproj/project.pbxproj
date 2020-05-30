@@ -18,6 +18,7 @@
 		FA3728E8247EF05600104213 /* ClimateControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3728E7247EF05600104213 /* ClimateControlModel.swift */; };
 		FA6B066C2480ABC4006273A9 /* Arduino Code in Resources */ = {isa = PBXBuildFile; fileRef = FA6B066B2480ABC4006273A9 /* Arduino Code */; };
 		FA6B066E2480B6C8006273A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B066D2480B6C8006273A9 /* Constants.swift */; };
+		FAA2B646248190D300CE424A /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2B645248190D300CE424A /* ExtensionUIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FA3728E7247EF05600104213 /* ClimateControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateControlModel.swift; sourceTree = "<group>"; };
 		FA6B066B2480ABC4006273A9 /* Arduino Code */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Arduino Code"; sourceTree = "<group>"; };
 		FA6B066D2480B6C8006273A9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FAA2B645248190D300CE424A /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				FA3728E7247EF05600104213 /* ClimateControlModel.swift */,
 				FA23FFED248019D5008DAE8A /* ClimateControlManager.swift */,
+				FAA2B645248190D300CE424A /* ExtensionUIViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				FA3728D4247EBF6F00104213 /* SystemViewController.swift in Sources */,
 				FA3728D0247EBF6F00104213 /* AppDelegate.swift in Sources */,
 				FA23FFEE248019D5008DAE8A /* ClimateControlManager.swift in Sources */,
+				FAA2B646248190D300CE424A /* ExtensionUIViewController.swift in Sources */,
 				FA6B066E2480B6C8006273A9 /* Constants.swift in Sources */,
 				FA3728E8247EF05600104213 /* ClimateControlModel.swift in Sources */,
 				FA3728D2247EBF6F00104213 /* SceneDelegate.swift in Sources */,

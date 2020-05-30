@@ -74,20 +74,22 @@ class SystemViewController: UIViewController {
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
         
+        var title: String
         if model.heaterIsOn {
             if model.acIsOn {
-                presentWarningAlert(title: "Can't have both heat and AC on!")
+                title = "Can't have both heat and AC on!"
             } else {
                 manager.addTalkbackCommand("HEAT_ON")
-                presentWarningAlert(title: "Turning on heater!")
+                title = "Turning on heater!"
             }
         } else if model.acIsOn {
             manager.addTalkbackCommand("AC_ON")
-            presentWarningAlert(title: "Turning on A/C!")
+            title = "Turning on A/C!"
         } else {
             manager.addTalkbackCommand("SYSTEM_OFF")
-            presentWarningAlert(title: "Turning system off!")
+            title = "Turning system off!"
         }
+        presentWarningAlert(title: title)
     }
     
     //MARK: - Helper functions
@@ -120,18 +122,5 @@ class SystemViewController: UIViewController {
             acSwitch.isOn = false
         }
     }
-    
-    func presentWarningAlert(title: String, message: String = "") {
-       
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) { (action) in
-           
-            // what will happen when user clicks "OK" button.
-        }
-    
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
-    
 }
 

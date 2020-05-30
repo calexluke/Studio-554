@@ -192,37 +192,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="vEz-Nw-p61">
-                                <rect key="frame" x="27.5" y="95" width="320" height="491"/>
+                                <rect key="frame" x="27.5" y="50" width="320" height="536"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FT0-4w-QvT">
+                                        <rect key="frame" x="40" y="0.0" width="240" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Timer Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgf-Q3-qyZ">
+                                                <rect key="frame" x="32" y="15.5" width="176" height="29"/>
+                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Bold" family="Bodoni 72 Oldstyle" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Qq6-3g-SnB"/>
+                                            <constraint firstItem="bgf-Q3-qyZ" firstAttribute="centerX" secondItem="FT0-4w-QvT" secondAttribute="centerX" id="kEV-4w-Ibf"/>
+                                            <constraint firstItem="bgf-Q3-qyZ" firstAttribute="centerY" secondItem="FT0-4w-QvT" secondAttribute="centerY" id="scS-S7-2Vm"/>
+                                        </constraints>
+                                    </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="hJp-tO-eLR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="85" width="320" height="176"/>
                                         <connections>
                                             <action selector="timerValueChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="z2U-c1-bCi"/>
                                         </connections>
                                     </datePicker>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ka-VL-xvf">
+                                        <rect key="frame" x="0.0" y="286" width="320" height="130"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="uYN-zK-8Vm"/>
+                                        </constraints>
+                                    </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="HlU-dI-L8n">
-                                        <rect key="frame" x="89.5" y="241" width="141.5" height="31"/>
+                                        <rect key="frame" x="89.5" y="441" width="141.5" height="29"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Bold" family="Bodoni 72 Oldstyle" pointSize="24"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-VP-ZgY">
-                                                <rect key="frame" x="92.5" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="92.5" y="0.0" width="51" height="29"/>
                                                 <color key="onTintColor" red="0.069599614860000006" green="0.3518054162" blue="0.098666887159999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <connections>
-                                                    <action selector="timerToggled:" destination="8rJ-Kc-sve" eventType="valueChanged" id="gPw-jt-f0d"/>
-                                                </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siF-a4-SlR">
-                                        <rect key="frame" x="40" y="297" width="240" height="128"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNV-HN-Q6g">
-                                        <rect key="frame" x="45" y="450" width="230" height="41"/>
+                                        <rect key="frame" x="45" y="495" width="230" height="41"/>
                                         <color key="backgroundColor" red="0.069599614860000006" green="0.3518054162" blue="0.098666887159999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="8bX-WS-azR"/>
@@ -237,6 +252,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="7ka-VL-xvf" firstAttribute="centerX" secondItem="vEz-Nw-p61" secondAttribute="centerX" id="Tpq-j4-fud"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -245,12 +263,13 @@
                             <constraint firstItem="vEz-Nw-p61" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="27.5" id="Swv-n8-vkr"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="vEz-Nw-p61" secondAttribute="bottom" constant="32" id="Zry-Xx-Yzh"/>
                             <constraint firstItem="vEz-Nw-p61" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="bUd-Oc-PPf"/>
-                            <constraint firstItem="vEz-Nw-p61" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="95" id="qhd-VZ-UOq"/>
+                            <constraint firstItem="vEz-Nw-p61" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="50" id="qhd-VZ-UOq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Set a Timer" image="timer" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="commandPickerView" destination="7ka-VL-xvf" id="aXm-3P-AWq"/>
                         <outlet property="confirmButton" destination="nNV-HN-Q6g" id="OsN-Gm-P6F"/>
                         <outlet property="timePickerView" destination="hJp-tO-eLR" id="eaE-Nf-RvC"/>
                         <outlet property="timeSwitch" destination="1dZ-VP-ZgY" id="ifA-LW-WZh"/>
