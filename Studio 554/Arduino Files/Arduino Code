@@ -7,15 +7,15 @@ const int heat_ac_pin = 4;
 const int system_control_pin = 5;
  
 // WiFi config
-const char ssid[] = "NETGEAR69";
-const char password[] = "curlyvase957";
+const char ssid[] = "my_SSID";
+const char password[] = "wifi_password";
  
 // ThingSpeak config
 const unsigned long channel_id = 1067747;
 const unsigned long talkback_id = 38797;
-const char write_api_key[] = "7E9AUFEOMAWMO8DQ";
-const char read_api_key[] = "GRW3H6TCCNKMRTCP";
-const char talkback_api_key[] = "3BLTM545BWPLGI4O";
+const char write_api_key[] = "write_api_key";
+const char read_api_key[] = "read_api_key";
+const char talkback_api_key[] = "talkback_api_key";
 
 
 
