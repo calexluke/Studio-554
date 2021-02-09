@@ -1,6 +1,6 @@
 # Studio 554: Remote Climate-Control System for Garage Gym (Arduino, C, Swift):
 
-![Studio 554](https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/100825611_10158613827204703_63495319035314176_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=zmGKgC3kf78AX919piM&_nc_oc=AQkMEdTCah7XDSctxh_ymvWQQ37X9RIFFcO-poKArVH2B9wH6SEzLm010zlZ8OjfhQQ&_nc_ht=scontent-ort2-1.xx&oh=da51b16843b744b4adeed3063762d400&oe=5FF67A4C)
+![Studio 554](https://i.ibb.co/p0n2K6L/Studio-554.jpg)
 
 
 	Summer 2020
